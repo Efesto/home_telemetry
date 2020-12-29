@@ -16,7 +16,7 @@ defmodule HomeTelemetry.SensorEventHandler do
   end
 
   @dht22_port 17
-  @reading_interval 10
+  @reading_interval 30
 
   def attach do
     DHT.start_polling(@dht22_port, :dht22, @reading_interval)
