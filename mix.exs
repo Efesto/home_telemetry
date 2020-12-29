@@ -50,8 +50,8 @@ defmodule HomeTelemetry.MixProject do
       {:nerves_system_bbb, "~> 2.8", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.4", runtime: false, targets: :osd32mp1},
       {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64},
-
-      {:dht, "~> 0.1.1"}
+      {:dht, "~> 0.1.1"},
+      {:instream, "~> 1.0"}
     ]
   end
 

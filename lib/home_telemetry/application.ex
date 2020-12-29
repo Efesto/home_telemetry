@@ -12,16 +12,14 @@ defmodule HomeTelemetry.Application do
 
     children = children(target())
 
-    DHT.start_polling(17, :dht22, 30)
-
-    :telemetry.attach("dht_reader", [:dht, :read], &HomeTelemetry.ReadHandler.handle_read/4, nil)
+    HomeTelemetry.SensorEventHandler.attach()
 
     Supervisor.start_link(children, opts)
   end
 
   def children(_target) do
     [
-     # events collector and sender
+      HomeTelemetry.SeriesConnection
     ]
   end
 
