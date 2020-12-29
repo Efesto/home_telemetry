@@ -1,0 +1,4 @@
+export WIFI_SSID=
+export WIFI_PSK=
+export INFLUXDB_HOST=
+export INFLUXDB_DB=

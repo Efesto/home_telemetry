@@ -27,9 +27,8 @@ config :nerves, source_date_epoch: "1609169802"
 config :logger, backends: [RingLogger]
 
 config :home_telemetry, HomeTelemetry.SeriesConnection,
-  auth: [method: :basic, username: "collector", password: "collector"],
-  database: "readings",
-  host: "192.168.0.33",
+  database: System.get_env("INFLUXDB_DB"),
+  host: System.get_env("INFLUXDB_HOST"),
   port: 8086
 
 if Mix.target() == :host or Mix.target() == :"" do
