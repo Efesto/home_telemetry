@@ -1,6 +1,31 @@
 # HomeTelemetry
 
-**TODO: Add description**
+Collects and sends to an InfluxDb instance home related telemetry data like Temperature and Humidity.
+Developed using [Nerves](https://www.nerves-project.org/)
+
+## Requirements:
+* Elixir
+* Asdf (suggested)
+* Direnv (suggested)
+
+## Getting Started
+1. `mix deps.get`
+2. configure env variables specified in `.envrc-sample` 
+    1. If using direnv, copy `.envrc-sample` as `.envrc` and configure it
+3. build your firmware with `MIX_TARGET=my_target mix firmware` For example, `MIX_TARGET=rpi3`
+4. burn to you sd card using `mix firmware.burn`
+
+## For db configuration and Grafana Dashboard
+### Installation
+1. `bash -c "$(wget -O- https://raw.githubusercontent.com/Efesto/home_telemetry/master/server/install-grafana_and_db.sh)"` Grafana and DB
+
+### How to configure Grafana for authentication-free dashboard
+1. refer to https://grafana.com/docs/grafana/latest/installation/configuration/ for adding the following to grafana config
+```
+[auth.proxy]
+auto_sign_up = true
+enabled = true
+```
 
 ## Targets
 
@@ -13,15 +38,6 @@ All of this logic is in the generated `mix.exs` and may be customized. For more
 information about targets see:
 
 https://hexdocs.pm/nerves/targets.html#content
-
-## Getting Started
-
-To start your Nerves app:
-  * `export MIX_TARGET=my_target` or prefix every command with
-    `MIX_TARGET=my_target`. For example, `MIX_TARGET=rpi3`
-  * Install dependencies with `mix deps.get`
-  * Create firmware with `mix firmware`
-  * Burn to an SD card with `mix firmware.burn`
 
 ## Learn more
 
