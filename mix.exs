@@ -35,6 +35,9 @@ defmodule HomeTelemetry.MixProject do
       {:shoehorn, "~> 0.7.0"},
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
+      {:dht, "~> 0.1.1"},
+      {:instream, "~> 1.0"},
+      {:ssh_subsystem_fwup, "~> 0.5.0", runtime: false},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.11.3", targets: @all_targets},
@@ -49,9 +52,7 @@ defmodule HomeTelemetry.MixProject do
       {:nerves_system_rpi4, "~> 1.13", runtime: false, targets: :rpi4},
       {:nerves_system_bbb, "~> 2.8", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.4", runtime: false, targets: :osd32mp1},
-      {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64},
-      {:dht, "~> 0.1.1"},
-      {:instream, "~> 1.0"}
+      {:nerves_system_x86_64, "~> 1.13", runtime: false, targets: :x86_64}
     ]
   end
 

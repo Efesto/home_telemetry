@@ -1,6 +1,6 @@
-alias HomeTelemetry.Series.DHT22
-
 defmodule HomeTelemetry.SensorEventHandler do
+  alias HomeTelemetry.Series.DHT22
+
   require Logger
 
   def handle_event([:dht, :read], %{temperature: temp, humidity: humidity}, _metadata, _config) do
