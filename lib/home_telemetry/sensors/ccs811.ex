@@ -69,7 +69,7 @@ defmodule HomeTelemetry.Sensors.CCS811 do
         0 -> :mode_0
         16 -> :mode_1
         32 -> :mode_2
-        68 -> :mode_3
+        48 -> :mode_3
         64 -> :mode_4
       end
 
