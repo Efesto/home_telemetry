@@ -39,6 +39,7 @@ defmodule HomeTelemetry.MixProject do
       {:instream, "~> 1.0"},
       {:ssh_subsystem_fwup, "~> 0.5.0", runtime: false},
       {:circuits_i2c, "~> 0.3.7"},
+      {:ccs811, path: "../ccs811"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.11.3", targets: @all_targets},

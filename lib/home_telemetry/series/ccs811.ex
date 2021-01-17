@@ -4,7 +4,7 @@ defmodule HomeTelemetry.Series.CCS811 do
   series do
     measurement("CCS811")
 
-    field(:co2)
+    field(:eco2)
     field(:tvoc)
   end
 end

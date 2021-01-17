@@ -16,15 +16,15 @@ defmodule HomeTelemetry.SensorEventHandler do
     })
   end
 
-  def handle_event([:ccs811, :read], %{co2: co2, tvoc: tvoc}, _metadata, _config) do
-    Logger.info("CO2: #{co2} ppm")
+  def handle_event([:ccs811, :read], %{eco2: eco2, tvoc: tvoc}, _metadata, _config) do
+    Logger.info("eCO2: #{eco2} ppm")
     Logger.info("TVOC: #{tvoc} ppm")
 
     data = %CCS811{}
 
     HomeTelemetry.SeriesConnection.write(%{
       data
-      | fields: %{data.fields | co2: co2, tvoc: tvoc}
+      | fields: %{data.fields | eco2: eco2, tvoc: tvoc}
     })
   end
 
