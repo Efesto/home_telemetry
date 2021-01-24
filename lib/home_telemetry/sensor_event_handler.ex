@@ -1,5 +1,6 @@
 defmodule HomeTelemetry.SensorEventHandler do
   alias HomeTelemetry.Series.DHT22
+  alias HomeTelemetry.Series.CCS811
 
   require Logger
 
@@ -15,15 +16,22 @@ defmodule HomeTelemetry.SensorEventHandler do
     })
   end
 
-  @dht22_port 17
-  @reading_interval 30
+  def handle_event([:ccs811, :read], %{eco2: eco2, tvoc: tvoc}, _metadata, _config) do
+    Logger.info("eCO2: #{eco2} ppm")
+    Logger.info("TVOC: #{tvoc} ppm")
+
+    data = %CCS811{}
+
+    HomeTelemetry.SeriesConnection.write(%{
+      data
+      | fields: %{data.fields | eco2: eco2, tvoc: tvoc}
+    })
+  end
 
   def attach do
-    DHT.start_polling(@dht22_port, :dht22, @reading_interval)
-
-    :telemetry.attach(
-      "dht_reader",
-      [:dht, :read],
+    :telemetry.attach_many(
+      "sensors_read_handler",
+      [[:dht, :read], [:ccs811, :read]],
       &HomeTelemetry.SensorEventHandler.handle_event/4,
       nil
     )

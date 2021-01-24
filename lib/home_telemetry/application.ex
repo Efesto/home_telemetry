@@ -11,7 +11,11 @@ defmodule HomeTelemetry.Application do
     opts = [strategy: :one_for_one, name: HomeTelemetry.Supervisor]
 
     children = children(target())
+
     HomeTelemetry.SensorEventHandler.attach()
+
+    HomeTelemetry.Sensors.DHT22.start_polling()
+    Ccs811.start_polling()
 
     Supervisor.start_link(children, opts)
   end
