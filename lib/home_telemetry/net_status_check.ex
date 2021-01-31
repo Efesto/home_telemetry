@@ -8,17 +8,17 @@ defmodule HomeTelemetry.NetStatusCheck do
   @polling_period 30_000
 
   @impl true
-  def init(:ok) do
+  def init(_) do
     send_message()
 
     {:ok, %{}}
   end
 
   @impl true
-  def handle_cast(:check, state) do
+  def handle_info(:check_status, state) do
     send_message()
 
-    {:noreply, state}
+    {:reply, state}
   end
 
   defp send_message() do
