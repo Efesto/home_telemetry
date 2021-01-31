@@ -7,6 +7,10 @@ defmodule HomeTelemetry.NetStatusCheck do
   @pin_io 27
   @polling_period 30_000
 
+  def start_link(_opts) do
+    GenServer.start_link(__MODULE__, :ok, _opts)
+  end
+
   @impl true
   def init(_) do
     send_message()
@@ -18,7 +22,7 @@ defmodule HomeTelemetry.NetStatusCheck do
   def handle_info(:check_status, state) do
     send_message()
 
-    {:reply, state}
+    {:noreply, state}
   end
 
   defp send_message() do
