@@ -20,6 +20,7 @@ defmodule HomeTelemetry.NetStatusCheck do
 
   @impl true
   def handle_info(:check_status, state) do
+    check_status()
     send_message()
 
     {:noreply, state}
