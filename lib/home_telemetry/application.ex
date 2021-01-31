@@ -20,6 +20,13 @@ defmodule HomeTelemetry.Application do
     Supervisor.start_link(children, opts)
   end
 
+  def children(:target) do
+    [
+      HomeTelemetry.WifiStatusCheck,
+      HomeTelemetry.SeriesConnection
+    ]
+  end
+
   def children(_target) do
     [
       HomeTelemetry.SeriesConnection
