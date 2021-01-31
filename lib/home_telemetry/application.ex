@@ -22,7 +22,7 @@ defmodule HomeTelemetry.Application do
 
   def children(:target) do
     [
-      HomeTelemetry.WifiStatusCheck,
+      HomeTelemetry.NetStatusCheck,
       HomeTelemetry.SeriesConnection
     ]
   end

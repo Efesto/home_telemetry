@@ -1,4 +1,4 @@
-defmodule HomeTelemetry.WifiStatusCheck do
+defmodule HomeTelemetry.NetStatusCheck do
   use GenServer
   require Logger
 
@@ -9,14 +9,20 @@ defmodule HomeTelemetry.WifiStatusCheck do
 
   @impl true
   def init(:ok) do
+    send_message()
+
     {:ok, %{}}
   end
 
   @impl true
   def handle_cast(:check, state) do
-    Process.send_after(self(), :check_status, @polling_period)
+    send_message()
 
     {:noreply, state}
+  end
+
+  defp send_message() do
+    Process.send_after(self(), :check_status, @polling_period)
   end
 
   def check_status() do
