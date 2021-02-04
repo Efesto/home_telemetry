@@ -22,6 +22,7 @@ defmodule HomeTelemetry.Application do
 
   def children(_target) do
     [
+      HomeTelemetry.NetStatusCheck,
       HomeTelemetry.SeriesConnection
     ]
   end

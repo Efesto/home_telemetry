@@ -38,7 +38,7 @@ defmodule HomeTelemetry.MixProject do
       {:dht, "~> 0.1.1"},
       {:instream, "~> 1.0"},
       {:ssh_subsystem_fwup, "~> 0.5.0", runtime: false},
-      {:circuits_i2c, "~> 0.3.7"},
+      {:circuits_gpio, "~> 0.4"},
       {:ccs811, "~> 0.1.0"},
 
       # Dependencies for all targets except :host
