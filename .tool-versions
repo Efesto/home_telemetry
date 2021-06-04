@@ -1,2 +1,4 @@
 elixir 1.11.2-otp-23
 erlang 23.0.2
+direnv 2.28.0
+kubectl 1.21.0
