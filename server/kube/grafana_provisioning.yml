@@ -753,7 +753,6 @@ kind: ConfigMap
 metadata:
   name: provisioning-datasources
 data:
-  # TODO: configure data source accordingly
   datasources.yaml: |-
     apiVersion: 1
 
@@ -761,11 +760,11 @@ data:
       - name: Influxdb
         type: influxdb
         access: proxy
-        url: 
-        user: 
+        url: $INFLUX_DB_URL
+        user: $INFLUX_DB_USER
         isDefault: true
         database: readings
         secureJsonData:
-          password: 
+          password: $INFLUX_DB_PASSWORD
         version: 1
 ---
