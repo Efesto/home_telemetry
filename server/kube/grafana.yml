@@ -770,6 +770,15 @@ data:
         editable: false
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-config
+data:
+  grafana.ini: |-
+    [auth.anonymous]
+    enabled = true
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: grafana-pvc
@@ -780,7 +789,6 @@ spec:
     requests:
       storage: 256m
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -839,6 +847,8 @@ spec:
               name: provisioning-home-dashboard
             - mountPath: /var/lib/grafana
               name: grafana-pv
+            - mountPath: /etc/grafana
+              name: custom-config
           env:
             - name: INFLUX_DB_URL
               valueFrom:
@@ -856,6 +866,9 @@ spec:
                   name: influxdb-config-secret
                   key: password
       volumes:
+        - name: custom-config
+          configMap:
+            name: custom-config
         - name: provisioning-dashboards
           configMap:
             name: provisioning-dashboards
