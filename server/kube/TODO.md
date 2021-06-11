@@ -1,6 +1,6 @@
-- Manage db related secrets and variables (password and url)
-- provision Influxdb
+- ~provision Influxdb~
 - provision nginx for guest mode
+  - Wonder if I can use k8s balancer for that
 - try to configure the sensor for sending data directly to the provisioned db
 - cleanup old shit
 - profit

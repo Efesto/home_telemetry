@@ -9,11 +9,3 @@ install-nginx:
 	sudo apt-get install nginx -y
 	sudo cp nginx/grafana_viewer /etc/nginx/sites-enabled/default
 	sudo systemctl restart nginx.service
-
-install-grafana:
-	sudo apt-get install -y adduser libfontconfig1
-	wget https://dl.grafana.com/oss/release/grafana_7.0.3_armhf.deb
-	sudo dpkg -i grafana_7.0.3_armhf.deb
-	sudo systemctl enable grafana-server.service
-	sudo systemctl start grafana-server
-	sudo systemctl status grafana-server

@@ -11,9 +11,6 @@ cd ~/life_quality_data/server
 # install influx db
 make install-db
 
-# install Grafana
-make install-grafana
-
 # configure nginx
 make install-nginx
 
