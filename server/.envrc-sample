@@ -1,0 +1,4 @@
+export INFLUX_DB_URL=
+export INFLUX_DB_USER=
+export INFLUX_DB_PASSWORD=
+export KUBECONFIG=kubeconfig
