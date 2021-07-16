@@ -4,9 +4,7 @@ Collects and sends to an InfluxDb instance home related telemetry data like Temp
 Developed using [Nerves](https://www.nerves-project.org/)
 
 ## Requirements:
-* Elixir
-* Asdf (suggested)
-* Direnv (suggested)
+* Asdf (everything else will come from there)
 
 ## Getting Started
 1. `mix deps.get`
@@ -15,7 +13,7 @@ Developed using [Nerves](https://www.nerves-project.org/)
 3. build your firmware with `MIX_TARGET=my_target mix firmware` For example, `MIX_TARGET=rpi3`
 4. burn to you sd card using `mix firmware.burn`
 
-## For db configuration and Grafana Dashboard
+## For db configuration and server
 ### Installation
 1. `bash -c "$(wget -O- https://raw.githubusercontent.com/Efesto/home_telemetry/master/server/install-db.sh)"` for installing DB
 

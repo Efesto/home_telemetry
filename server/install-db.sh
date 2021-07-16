@@ -8,9 +8,6 @@ sudo apt-get install git wget -y
 git clone https://github.com/Efesto/home_telemetry.git ~/home_telemetry
 cd ~/life_quality_data/server
 
-# install influx db
+# installs influx db
 make install-db
-
-# configure nginx
-make install-nginx
 

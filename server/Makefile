@@ -5,3 +5,10 @@ install:
 
 upgrade: 
 	helm upgrade the-place ./the-place
+
+install-db:
+	echo "deb https://repos.influxdata.com/ubuntu bionic stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+	curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+		
+	sudo apt-get install influxdb -y
+	influx -import -path=db.import -precision=s
