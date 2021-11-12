@@ -26,7 +26,7 @@ defmodule HomeTelemetry.SensorEventHandler do
 
     data = %CCS811{}
 
-    .write(%{
+    SeriesConnection.write(%{
       data
       | fields: %{data.fields | eco2: eco2, tvoc: tvoc}
     })
