@@ -26,3 +26,6 @@ dependencies: # A list of the chart requirements (optional)
   - name: grafana
     repository: https://grafana.github.io/helm-charts
     version: 6.13.9
+  - name: influxdb
+    repository: https://helm.influxdata.com
+    version: 4.10.0
