@@ -6,6 +6,17 @@ spec:
   rules:
   - http:
       paths:
+      # TODO: no idea how to expose influxdb to a different sub host like /influxdb
+      # Tried with url rewrite on nginx, checked helm chart config, dedicated ingress etc...
+      # load balancer could be a possibility
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            # TODO: make this smarter
+            name: {{ .Values.ingress.influxdb.service.name }}
+            port:
+              number: 8086
       - path: /grafana
         pathType: Prefix
         backend:
