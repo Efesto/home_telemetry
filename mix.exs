@@ -41,6 +41,9 @@ defmodule HomeTelemetry.MixProject do
       {:circuits_gpio, "~> 0.4"},
       {:ccs811, "~> 0.1.0"},
 
+      # Dependencies for dev
+      {:credo, "~> 1.5", only: [:dev], runtime: false},
+
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.11.3", targets: @all_targets},
       {:nerves_pack, "~> 0.4.0", targets: @all_targets},

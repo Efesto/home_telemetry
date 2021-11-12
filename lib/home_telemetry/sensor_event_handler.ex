@@ -1,6 +1,10 @@
 defmodule HomeTelemetry.SensorEventHandler do
-  alias HomeTelemetry.Series.DHT22
-  alias HomeTelemetry.Series.CCS811
+  @moduledoc """
+  Collects sensor events and sends them to the time series database
+  """
+
+  alias HomeTelemetry.Series.{DHT22, CCS811}
+  alias HomeTelemetry.SeriesConnection
 
   require Logger
 
@@ -10,7 +14,7 @@ defmodule HomeTelemetry.SensorEventHandler do
 
     data = %DHT22{}
 
-    HomeTelemetry.SeriesConnection.write(%{
+    SeriesConnection.write(%{
       data
       | fields: %{data.fields | temperature: temp, humidity: humidity}
     })
@@ -22,7 +26,7 @@ defmodule HomeTelemetry.SensorEventHandler do
 
     data = %CCS811{}
 
-    HomeTelemetry.SeriesConnection.write(%{
+    .write(%{
       data
       | fields: %{data.fields | eco2: eco2, tvoc: tvoc}
     })
@@ -32,7 +36,7 @@ defmodule HomeTelemetry.SensorEventHandler do
     :telemetry.attach_many(
       "sensors_read_handler",
       [[:dht, :read], [:ccs811, :read]],
-      &HomeTelemetry.SensorEventHandler.handle_event/4,
+      &handle_event/4,
       nil
     )
   end

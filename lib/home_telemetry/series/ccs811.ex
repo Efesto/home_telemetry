@@ -1,4 +1,6 @@
 defmodule HomeTelemetry.Series.CCS811 do
+  @moduledoc false
+
   use Instream.Series
 
   series do

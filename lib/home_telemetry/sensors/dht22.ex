@@ -1,8 +1,11 @@
 defmodule HomeTelemetry.Sensors.DHT22 do
-  @dht22_port 17
-  @reading_interval_seconds 60
+  @moduledoc """
+  Humidity and temperature sensor
+  """
 
-  def start_polling() do
-    DHT.start_polling(@dht22_port, :dht22, @reading_interval_seconds)
+  @dht22_port 17
+
+  def start_polling(interval) do
+    DHT.start_polling(@dht22_port, :dht22, interval)
   end
 end

@@ -1,4 +1,8 @@
 defmodule HomeTelemetry.NetStatusCheck do
+  @moduledoc """
+  Genserver that checks network connection status and sends a signal on GPIO if missing
+  """
+
   use GenServer
   require Logger
 
@@ -32,7 +36,7 @@ defmodule HomeTelemetry.NetStatusCheck do
 
   def check_status() do
     connection_status = VintageNet.get(["connection"])
-    Logger.info("Connection status: #{connection_status}")
+    Logger.debug("Connection status: #{connection_status}")
     {:ok, ref} = GPIO.open(@pin_io, :output)
 
     case connection_status in [:lan, :internet] do

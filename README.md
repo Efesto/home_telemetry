@@ -5,6 +5,7 @@ Developed using [Nerves](https://www.nerves-project.org/)
 
 ## Requirements:
 * Asdf (everything else will come from there)
+* Nerves (`mix archive.install hex nerves_bootstrap`)
 
 ## Getting Started
 1. `mix deps.get`

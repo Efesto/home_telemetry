@@ -1,4 +1,6 @@
 defmodule HomeTelemetry.Series.DHT22 do
+  @moduledoc false
+
   use Instream.Series
 
   series do
