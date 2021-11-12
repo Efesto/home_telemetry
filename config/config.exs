@@ -29,7 +29,7 @@ config :logger, backends: [RingLogger]
 config :home_telemetry, HomeTelemetry.SeriesConnection,
   database: System.get_env("INFLUXDB_DB"),
   host: System.get_env("INFLUXDB_HOST"),
-  port: System.get_env("INFLUXDB_PORT"),
+  port: System.get_env("INFLUXDB_PORT")
 
 if Mix.target() == :host or Mix.target() == :"" do
   import_config "host.exs"

@@ -7,8 +7,8 @@ defmodule HomeTelemetry.NetStatusCheck do
   @pin_io 27
   @polling_period 30_000
 
-  def start_link(_opts) do
-    GenServer.start_link(__MODULE__, :ok, _opts)
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, :ok, opts)
   end
 
   @impl true
