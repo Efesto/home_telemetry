@@ -8,28 +8,23 @@ defmodule HomeTelemetry.SensorEventHandler do
 
   require Logger
 
-  def handle_event([:dht, :read], %{temperature: temp, humidity: humidity}, _metadata, _config) do
-    Logger.info("Temperature: #{temp} C")
-    Logger.info("Humidity: #{humidity} %")
-
-    data = %DHT22{}
-
-    SeriesConnection.write(%{
-      data
-      | fields: %{data.fields | temperature: temp, humidity: humidity}
-    })
+  def handle_event([:dht, :read], event, _metadata, _config) do
+    write_event(%DHT22{}, event |> Map.take([:temperature, :humidity]))
   end
 
-  def handle_event([:ccs811, :read], %{eco2: eco2, tvoc: tvoc}, _metadata, _config) do
-    Logger.info("eCO2: #{eco2} ppm")
-    Logger.info("TVOC: #{tvoc} ppm")
+  def handle_event([:ccs811, :read], event, _metadata, _config) do
+    write_event(%CCS811{}, event |> Map.take([:eco2, :tvoc]))
+  end
 
-    data = %CCS811{}
+  defp write_event(data, event) do
+    {:ok, collector_name} = :inet.gethostname()
+    tags = Map.merge(data.tags, %{collector: collector_name})
+    fields = Map.merge(data.fields, event)
 
-    SeriesConnection.write(%{
-      data
-      | fields: %{data.fields | eco2: eco2, tvoc: tvoc}
-    })
+    data = %{data | fields: fields, tags: tags}
+    Logger.debug(inspect(data))
+
+    SeriesConnection.write(data)
   end
 
   def attach do

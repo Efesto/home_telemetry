@@ -8,5 +8,7 @@ defmodule HomeTelemetry.Series.CCS811 do
 
     field(:eco2)
     field(:tvoc)
+
+    tag(:collector)
   end
 end

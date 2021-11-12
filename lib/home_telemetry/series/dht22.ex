@@ -8,5 +8,7 @@ defmodule HomeTelemetry.Series.DHT22 do
 
     field(:temperature)
     field(:humidity)
+
+    tag(:collector)
   end
 end
