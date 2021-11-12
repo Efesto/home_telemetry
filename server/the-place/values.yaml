@@ -1,7 +1,25 @@
 ingress:
   grafana:
     service:
-      name: the-place-grafana
+      name: the-place-grafana  
+  influxdb:
+    service:
+      name: the-place-influxdb
+
+influxdb:
+  image:
+    tag: "1.8"
+  persistence:
+    size:
+      2Gi
+  setDefaultUser:
+    user:
+      username: $INFLUX_DB_USER
+      password: $INFLUX_DB_PASSWORD
+  initScripts:
+    enabled: true
+    scripts:
+      createreadings.iql: CREATE DATABASE "readings"  
 
 grafana:
   fullname: grafana
@@ -773,7 +791,7 @@ grafana:
           editable: false
 
   env:
-    INFLUX_DB_URL: "http://192.168.0.33:8086"
+    INFLUX_DB_URL: "http://192.168.0.33"
 
   persistence:
     enabled: true
