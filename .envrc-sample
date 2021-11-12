@@ -3,3 +3,4 @@ export WIFI_PSK=
 export INFLUXDB_HOST=
 export INFLUXDB_DB=
 export INFLUXDB_PORT=
+export COLLECTOR_IP=
