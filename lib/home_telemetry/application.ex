@@ -5,7 +5,7 @@ defmodule HomeTelemetry.Application do
 
   use Application
 
-  alias HomeTelemetry.Sensors.DHT22
+  alias HomeTelemetry.Sensors.DHT
 
   def start(_type, _args) do
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -16,9 +16,10 @@ defmodule HomeTelemetry.Application do
 
     HomeTelemetry.SensorEventHandler.attach()
 
-    dht22_interval = Application.get_env(:home_telemetry, :dht22_interval_seconds)
+    dht_interval = Application.get_env(:home_telemetry, :dht_interval_seconds)
+    dht_type = Application.get_env(:home_telemetry, :dht_type)
 
-    DHT22.start_polling(dht22_interval)
+    DHT.start_polling(dht_interval, dht_type)
     Ccs811.start_polling()
 
     Supervisor.start_link(children, opts)

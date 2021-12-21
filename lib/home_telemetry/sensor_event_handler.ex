@@ -3,13 +3,13 @@ defmodule HomeTelemetry.SensorEventHandler do
   Collects sensor events and sends them to the time series database
   """
 
-  alias HomeTelemetry.Series.{DHT22, CCS811}
+  alias HomeTelemetry.Series.{DHT, CCS811}
   alias HomeTelemetry.SeriesConnection
 
   require Logger
 
   def handle_event([:dht, :read], event, _metadata, _config) do
-    write_event(%DHT22{}, event |> Map.take([:temperature, :humidity]))
+    write_event(%DHT{}, event |> Map.take([:temperature, :humidity]))
   end
 
   def handle_event([:ccs811, :read], event, _metadata, _config) do
