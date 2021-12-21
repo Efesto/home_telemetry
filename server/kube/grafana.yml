@@ -46,16 +46,14 @@ data:
           "datasource": null,
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "mappings": [
                 {
-                  "from": "",
-                  "id": 1,
-                  "operator": "",
-                  "text": "",
-                  "to": "",
-                  "type": 1,
-                  "value": ""
+                  "options": {
+                    "": {
+                      "text": ""
+                    }
+                  },
+                  "type": "value"
                 }
               ],
               "thresholds": {
@@ -97,9 +95,11 @@ data:
               ],
               "fields": "",
               "values": false
-            }
+            },
+            "text": {},
+            "textMode": "auto"
           },
-          "pluginVersion": "7.0.3",
+          "pluginVersion": "8.0.5",
           "targets": [
             {
               "groupBy": [
@@ -116,7 +116,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "DHT-22",
+              "measurement": "DHT",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -147,16 +147,14 @@ data:
           "datasource": null,
           "fieldConfig": {
             "defaults": {
-              "custom": {},
               "mappings": [
                 {
-                  "from": "",
-                  "id": 1,
-                  "operator": "",
-                  "text": "",
-                  "to": "",
-                  "type": 1,
-                  "value": ""
+                  "options": {
+                    "": {
+                      "text": ""
+                    }
+                  },
+                  "type": "value"
                 }
               ],
               "thresholds": {
@@ -198,9 +196,11 @@ data:
               ],
               "fields": "",
               "values": false
-            }
+            },
+            "text": {},
+            "textMode": "auto"
           },
-          "pluginVersion": "7.0.3",
+          "pluginVersion": "8.0.5",
           "targets": [
             {
               "groupBy": [
@@ -217,7 +217,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "DHT-22",
+              "measurement": "DHT",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -252,7 +252,7 @@ data:
           "datasource": null,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "links": []
             },
             "overrides": []
           },
@@ -280,9 +280,10 @@ data:
           "linewidth": 1,
           "nullPointMode": "null",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "8.0.5",
           "pointradius": 2,
           "points": true,
           "renderer": "flot",
@@ -293,9 +294,16 @@ data:
           "targets": [
             {
               "alias": "Temperature",
-              "groupBy": [],
+              "groupBy": [
+                {
+                  "params": [
+                    "collector"
+                  ],
+                  "type": "tag"
+                }
+              ],
               "hide": false,
-              "measurement": "DHT-22",
+              "measurement": "DHT",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -362,7 +370,7 @@ data:
           "datasource": null,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "links": []
             },
             "overrides": []
           },
@@ -390,9 +398,10 @@ data:
           "linewidth": 1,
           "nullPointMode": "null",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "8.0.5",
           "pointradius": 2,
           "points": true,
           "renderer": "flot",
@@ -403,8 +412,15 @@ data:
           "targets": [
             {
               "alias": "Humidity",
-              "groupBy": [],
-              "measurement": "DHT-22",
+              "groupBy": [
+                {
+                  "params": [
+                    "collector"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "DHT",
               "orderByTime": "ASC",
               "policy": "default",
               "query": "SELECT mean(\"humidity\") FROM \"DHT-22\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
@@ -473,7 +489,7 @@ data:
           "datasource": null,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "links": []
             },
             "overrides": []
           },
@@ -501,9 +517,10 @@ data:
           "linewidth": 1,
           "nullPointMode": "null",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "8.0.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -599,7 +616,7 @@ data:
           "datasource": null,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "links": []
             },
             "overrides": []
           },
@@ -627,9 +644,10 @@ data:
           "linewidth": 1,
           "nullPointMode": "null",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "8.0.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -719,14 +737,14 @@ data:
         }
       ],
       "refresh": "10s",
-      "schemaVersion": 25,
+      "schemaVersion": 30,
       "style": "dark",
       "tags": [],
       "templating": {
         "list": []
       },
       "time": {
-        "from": "now-6h",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {
@@ -745,7 +763,7 @@ data:
       "timezone": "",
       "title": "The Place",
       "uid": "by3V2kRgk",
-      "version": 10
+      "version": 1
     }
 ---
 apiVersion: v1

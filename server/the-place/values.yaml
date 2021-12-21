@@ -65,23 +65,20 @@ grafana:
             "editable": true,
             "gnetId": null,
             "graphTooltip": 0,
-            "id": 1,
             "links": [],
             "panels": [
               {
                 "datasource": null,
                 "fieldConfig": {
                   "defaults": {
-                    "custom": {},
                     "mappings": [
                       {
-                        "from": "",
-                        "id": 1,
-                        "operator": "",
-                        "text": "",
-                        "to": "",
-                        "type": 1,
-                        "value": ""
+                        "options": {
+                          "": {
+                            "text": ""
+                          }
+                        },
+                        "type": "value"
                       }
                     ],
                     "thresholds": {
@@ -123,9 +120,11 @@ grafana:
                     ],
                     "fields": "",
                     "values": false
-                  }
+                  },
+                  "text": {},
+                  "textMode": "auto"
                 },
-                "pluginVersion": "7.0.3",
+                "pluginVersion": "8.0.5",
                 "targets": [
                   {
                     "groupBy": [
@@ -137,12 +136,18 @@ grafana:
                       },
                       {
                         "params": [
+                          "collector"
+                        ],
+                        "type": "tag"
+                      },
+                      {
+                        "params": [
                           "null"
                         ],
                         "type": "fill"
                       }
                     ],
-                    "measurement": "DHT-22",
+                    "measurement": "DHT",
                     "orderByTime": "ASC",
                     "policy": "default",
                     "refId": "A",
@@ -173,16 +178,14 @@ grafana:
                 "datasource": null,
                 "fieldConfig": {
                   "defaults": {
-                    "custom": {},
                     "mappings": [
                       {
-                        "from": "",
-                        "id": 1,
-                        "operator": "",
-                        "text": "",
-                        "to": "",
-                        "type": 1,
-                        "value": ""
+                        "options": {
+                          "": {
+                            "text": ""
+                          }
+                        },
+                        "type": "value"
                       }
                     ],
                     "thresholds": {
@@ -224,9 +227,11 @@ grafana:
                     ],
                     "fields": "",
                     "values": false
-                  }
+                  },
+                  "text": {},
+                  "textMode": "auto"
                 },
-                "pluginVersion": "7.0.3",
+                "pluginVersion": "8.0.5",
                 "targets": [
                   {
                     "groupBy": [
@@ -238,12 +243,18 @@ grafana:
                       },
                       {
                         "params": [
+                          "collector"
+                        ],
+                        "type": "tag"
+                      },
+                      {
+                        "params": [
                           "null"
                         ],
                         "type": "fill"
                       }
                     ],
-                    "measurement": "DHT-22",
+                    "measurement": "DHT",
                     "orderByTime": "ASC",
                     "policy": "default",
                     "refId": "A",
@@ -278,7 +289,7 @@ grafana:
                 "datasource": null,
                 "fieldConfig": {
                   "defaults": {
-                    "custom": {}
+                    "links": []
                   },
                   "overrides": []
                 },
@@ -306,9 +317,10 @@ grafana:
                 "linewidth": 1,
                 "nullPointMode": "null",
                 "options": {
-                  "dataLinks": []
+                  "alertThreshold": true
                 },
                 "percentage": false,
+                "pluginVersion": "8.0.5",
                 "pointradius": 2,
                 "points": true,
                 "renderer": "flot",
@@ -319,9 +331,16 @@ grafana:
                 "targets": [
                   {
                     "alias": "Temperature",
-                    "groupBy": [],
+                    "groupBy": [
+                      {
+                        "params": [
+                          "collector"
+                        ],
+                        "type": "tag"
+                      }
+                    ],
                     "hide": false,
-                    "measurement": "DHT-22",
+                    "measurement": "DHT",
                     "orderByTime": "ASC",
                     "policy": "default",
                     "refId": "A",
@@ -388,7 +407,7 @@ grafana:
                 "datasource": null,
                 "fieldConfig": {
                   "defaults": {
-                    "custom": {}
+                    "links": []
                   },
                   "overrides": []
                 },
@@ -416,9 +435,10 @@ grafana:
                 "linewidth": 1,
                 "nullPointMode": "null",
                 "options": {
-                  "dataLinks": []
+                  "alertThreshold": true
                 },
                 "percentage": false,
+                "pluginVersion": "8.0.5",
                 "pointradius": 2,
                 "points": true,
                 "renderer": "flot",
@@ -429,11 +449,18 @@ grafana:
                 "targets": [
                   {
                     "alias": "Humidity",
-                    "groupBy": [],
-                    "measurement": "DHT-22",
+                    "groupBy": [
+                      {
+                        "params": [
+                          "collector"
+                        ],
+                        "type": "tag"
+                      }
+                    ],
+                    "measurement": "DHT",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "SELECT mean(\"humidity\") FROM \"DHT-22\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+                    "query": "SELECT mean(\"humidity\") FROM \"DHT\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
                     "rawQuery": false,
                     "refId": "A",
                     "resultFormat": "time_series",
@@ -499,7 +526,7 @@ grafana:
                 "datasource": null,
                 "fieldConfig": {
                   "defaults": {
-                    "custom": {}
+                    "links": []
                   },
                   "overrides": []
                 },
@@ -527,9 +554,10 @@ grafana:
                 "linewidth": 1,
                 "nullPointMode": "null",
                 "options": {
-                  "dataLinks": []
+                  "alertThreshold": true
                 },
                 "percentage": false,
+                "pluginVersion": "8.0.5",
                 "pointradius": 2,
                 "points": false,
                 "renderer": "flot",
@@ -625,7 +653,7 @@ grafana:
                 "datasource": null,
                 "fieldConfig": {
                   "defaults": {
-                    "custom": {}
+                    "links": []
                   },
                   "overrides": []
                 },
@@ -653,9 +681,10 @@ grafana:
                 "linewidth": 1,
                 "nullPointMode": "null",
                 "options": {
-                  "dataLinks": []
+                  "alertThreshold": true
                 },
                 "percentage": false,
+                "pluginVersion": "8.0.5",
                 "pointradius": 2,
                 "points": false,
                 "renderer": "flot",
@@ -745,7 +774,7 @@ grafana:
               }
             ],
             "refresh": "10s",
-            "schemaVersion": 25,
+            "schemaVersion": 30,
             "style": "dark",
             "tags": [],
             "templating": {
@@ -771,7 +800,7 @@ grafana:
             "timezone": "",
             "title": "The Place",
             "uid": "by3V2kRgk",
-            "version": 10
+            "version": 1
           }
 
   datasources:

@@ -8,7 +8,7 @@ import Config
 # Enable the Nerves integration with Mix
 Application.start(:nerves_bootstrap)
 
-config :home_telemetry, target: Mix.target(), dht_interval_seconds: 60, dht_type: :dht11
+config :home_telemetry, target: Mix.target(), dht_interval_seconds: 60, dht_type: :dht22
 
 # Customize non-Elixir parts of the firmware. See
 # https://hexdocs.pm/nerves/advanced-configuration.html for details.
