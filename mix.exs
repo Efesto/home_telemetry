@@ -39,7 +39,7 @@ defmodule HomeTelemetry.MixProject do
       {:instream, "~> 1.0"},
       {:ssh_subsystem_fwup, "~> 0.5.0", runtime: false},
       {:circuits_gpio, "~> 0.4"},
-      {:ccs811, "~> 0.1.0"},
+      {:ccs811, "~> 0.2.0"},
 
       # Dependencies for dev
       {:credo, "~> 1.5", only: [:dev], runtime: false},
